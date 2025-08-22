@@ -94,6 +94,9 @@
                                     <th>PLN Volt (V)</th>
                                     <th>PLN Current (A)</th>
                                     <th>PLN Watt (W)</th>
+
+                                    <th>Relay 1</th>
+                                    <th>Relay 2</th>
                                 @else
                                     <th>Periode</th>
                                     <th>Avg Battery A</th>
@@ -122,6 +125,8 @@
                                         <td>{{ number_format($log->pln_volt, 2) }}</td>
                                         <td>{{ number_format($log->pln_current, 2) }}</td>
                                         <td>{{ number_format($log->pln_watt, 2) }}</td>
+                                        <td>{{ number_format($log->relay_1) }}</td>
+                                        <td>{{ number_format($log->relay_2) }}</td>
                                     @else
                                         <td>
                                             {{ $log->period_start->format('d/m/Y') }}
@@ -155,7 +160,46 @@
 
                 @if ($pagination && $pagination->hasPages())
                     <div class="d-flex justify-content-center">
-                        {{ $pagination->appends(request()->query())->links() }}
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                {{-- Previous Page Link --}}
+                                @if ($pagination->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Previous</span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $pagination->previousPageUrl() }}"
+                                            rel="prev">Previous</a>
+                                    </li>
+                                @endif
+
+                                {{-- Pagination Elements --}}
+                                {{-- @foreach ($pagination->getUrlRange(1, $pagination->lastPage()) as $page => $url)
+                                    @if ($page == $pagination->currentPage())
+                                        <li class="page-item active">
+                                            <span class="page-link">{{ $page }}</span>
+                                        </li>
+                                    @else
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach --}}
+
+                                {{-- Next Page Link --}}
+                                @if ($pagination->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $pagination->nextPageUrl() }}"
+                                            rel="next">Next</a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Next</span>
+                                    </li>
+                                @endif
+                            </ul>
+                        </nav>
                     </div>
                 @endif
             </div>

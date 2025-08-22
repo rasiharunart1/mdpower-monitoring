@@ -168,7 +168,7 @@
                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name ?? 'Douglas McGee' }}</span>
                 {{-- <img class="img-profile rounded-circle" src="{{ asset('assets/img/undraw_profile.svg') }}"> --}}
                 <img class="img-profile rounded-circle"
-                    src="{{ Auth::user()->avatar ?? asset('assets/img/undraw_profile.svg') }}" width="32"
+                    src="{{ Auth::user()->avatar ?? asset('assets/img/undraw_profile_1.svg') }}" width="32"
                     height="32">
             </a>
             <!-- Dropdown - User Information -->

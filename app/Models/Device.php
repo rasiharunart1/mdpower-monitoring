@@ -54,13 +54,13 @@ class Device extends Model
     }
 
     public function checkOnlineStatus()
-{
-    if ($this->last_seen) {
-        $minutesOffline = $this->last_seen->diffInMinutes(now());
-        $this->status = $minutesOffline > 5 ? 'offline' : 'online';
-        $this->save();
+    {
+        if ($this->last_seen) {
+            $minutesOffline = $this->last_seen->diffInMinutes(now());
+            $this->status = $minutesOffline > 5 ? 'offline' : 'online';
+            $this->save();
+        }
     }
-}
 
     public function scopeOnline($query)
     {

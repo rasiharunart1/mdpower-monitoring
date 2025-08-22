@@ -32,7 +32,7 @@ class GoogleController extends Controller
 
         $user = User::where('email', $googleUser->email)->first();
         if ($user) {
-            $user->update(['google_id' => $googleUser->id]);
+            $user->update(['google_id' => $googleUser->id,'avatar' => $googleUser->avatar ?? $user->avatar]);
             Auth::login($user);
             return redirect()->intended('/dashboard');
         }

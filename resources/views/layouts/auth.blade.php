@@ -22,10 +22,30 @@
             align-items: center;
             min-height: 100vh;
             padding: 2rem 0;
+            position: relative;
+            /* needed for the blur overlay layering */
+        }
+
+        /* Blurred background overlay (keeps content sharp) */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            /* don't block clicks */
+            /* Blur and slightly brighten/saturate the backdrop (the gradient/image set on body) */
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            backdrop-filter: blur(14px) saturate(120%);
+            /* Optional frosted tint over the blurred backdrop */
+            background: rgba(255, 255, 255, 0.18);
         }
 
         .container {
             width: 100%;
+            position: relative;
+            /* make sure content sits above the blur overlay */
+            z-index: 1;
         }
 
         .card {

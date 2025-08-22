@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
-    <title>@yield('title', 'SB Admin 2 - Dashboard')</title>
+    <title>@yield('title', 'MDPOWER- Dashboard')</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
